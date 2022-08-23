@@ -1,0 +1,74 @@
+<configuration>
+    <appender name="CDRAPPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>D:\var\kalsym\logs\tta-config-example/cdr/log.txt</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>D:\var\kalsym\logs\tta-config-example/cdr/log.%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%p %d [%t] %L - %m%n</Pattern>
+            </layout>
+        </encoder>
+    </appender>
+    <appender name="APPLICATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>D:\var\kalsym\logs\tta-config-example/smart-sms-core.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>D:\var\kalsym\logs\tta-config-example/smart-sms-core.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%p %d [%t] %L - %m%n</Pattern>
+            </layout>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%p %d [%t] %L - %m%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%p %d [%t] %L - %m%n</Pattern>
+        </encoder>
+    </appender>
+    <logger name="com.kalsym.persistentclient" level="INFO" additivity="false">
+        <appender-ref ref="APPLICATION"/>
+    </logger>
+    <logger name="Logger">
+        <level value="debug" />
+    </logger>
+    <logger name="cdrs" level="DEBUG" additivity="false">
+        <appender-ref ref="CDRAPPENDER"/>
+    </logger>
+    <logger name="application" level="DEBUG" additivity="false">
+        <appender-ref ref="APPLICATION"/>
+    </logger>
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <root level="DEBUG">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
