@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="pandago-wrapper" />
         <module name="spring-boot-sample" />
+        <module name="dw-panda-go" />
         <module name="spring-boot-example" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dw-panda-go" options="-parameters" />
       <module name="pandago-wrapper" options="-parameters" />
       <module name="spring-boot-example" options="-parameters" />
       <module name="spring-boot-sample" options="-parameters" />
