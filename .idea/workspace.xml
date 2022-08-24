@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="add todo in getPrice endpoint in OrderController.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/LoginApi.java" afterDir="false" />
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added accessToken endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/AccessTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/AccessTokenResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/OutletListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/OutletListResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/AccessTokenResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/AccessTokenResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/OutletListResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/OutletListResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController.class" afterDir="false" />
     </list>
@@ -119,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661321218222</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added accessToken endpoint">
+      <created>1661342467588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661342467588</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,7 +144,8 @@
     <MESSAGE value="Added login method" />
     <MESSAGE value="Added OrderController.java" />
     <MESSAGE value="add todo in getPrice endpoint in OrderController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="add todo in getPrice endpoint in OrderController.java" />
+    <MESSAGE value="Added accessToken endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added accessToken endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

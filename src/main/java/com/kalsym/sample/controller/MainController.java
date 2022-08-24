@@ -39,33 +39,54 @@ public class MainController {
 
     @GetMapping(path = {"getAllOutlets"}, name = "outlets-get", produces = "application/json")
     //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
-    public ResponseEntity<HttpResponse> getAllOutlets(HttpServletRequest request,
-                                                      @RequestParam(required = false, defaultValue = "") String token) {
+    public String getAllOutlets(HttpServletRequest request,
+                                @RequestParam(required = false, defaultValue = "123") String token) {
         String logprefix = request.getRequestURI();
         HttpResponse response = new HttpResponse(request.getRequestURI());
         Logger.application.info("Received getAllOutlets Request...");
         Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received getAllOutlets request");
 
+        OutletListResponse outletListResponse = sendOutletListRequest(token);
+        try {
+            return outletListResponse.toJSON();
+        } catch (Exception exp) {
+            return "ERROR";
+        }
+        //return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
+    }
+
+    @GetMapping(path = {"accessToken"}, name = "access-token-get", produces = "application/json")
+    //@PreAuthorize("hasAnyAuthority('access-token-get', 'all')")
+    public ResponseEntity<HttpResponse> accessToken(HttpServletRequest request) {
+
+        String logprefix = request.getRequestURI();
+        HttpResponse response = new HttpResponse(request.getRequestURI());
+        Logger.application.info("Received accessToken Request...");
+        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received accessToken request");
+
+        AccessTokenResponse accTokenresponse = sendAccessTokenRequest();
+
+        try {
+            response.setData(accTokenresponse.toJSON());
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (Exception exp) {
+            response.setMessage(exp.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
+
+    public static OutletListResponse sendOutletListRequest(String token) {
         ApiClient apiClient = new ApiClient();
 
         String authorization = "Bearer " + token;
         final OutletsApi api = new OutletsApi();
 
         api.setApiClient(apiClient);
-        OutletListResponse responseOutlet = api.outletListGet(authorization);
-
-        return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
+        OutletListResponse outletListResponse = api.outletListGet(authorization);
+        return outletListResponse;
     }
 
-    @GetMapping(path = {"accessToken"}, name = "access-token-get", produces = "application/json")
-    //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
-    public ResponseEntity<HttpResponse> accessToken(HttpServletRequest request,
-                                                    @RequestParam(required = false, defaultValue = "true") boolean featured) {
-
-        String logprefix = request.getRequestURI();
-        HttpResponse response = new HttpResponse(request.getRequestURI());
-        Logger.application.info("Received accessToken Request...");
-        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received accessToken request");
+    public static AccessTokenResponse sendAccessTokenRequest() {
 
         String basePath = "https://sts-st.deliveryhero.io";
         ApiClient apiClient = new ApiClient();
@@ -75,19 +96,12 @@ public class MainController {
         api.setApiClient(apiClient);
         AccessTokenResponse accTokenresponse = api.accessTokenGet();
 
-        try {
-            response.setData(accTokenresponse.toJSON());
-            return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
-        } catch (Exception exp) {
-            response.setMessage(exp.getMessage());
-            return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
-        }
-
+        return accTokenresponse;
 
     }
 
     @GetMapping(path = {"login"}, name = "login-get", produces = "application/json")
-    //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
+    //@PreAuthorize("hasAnyAuthority('login-get', 'all')")
     public String login(HttpServletRequest request,
                         @RequestParam(required = false, defaultValue = "true") boolean featured) {
 
