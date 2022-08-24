@@ -1,5 +1,6 @@
 package com.kalsym.sample.controller;
 
+import com.kalsym.pandago.client.api.LoginApi;
 import com.kalsym.pandago.client.api.OutletsApi;
 import com.kalsym.pandago.client.invoker.ApiClient;
 import com.kalsym.pandago.client.model.AccessTokenResponse;
@@ -22,7 +23,6 @@ import java.util.List;
 @RestController()
 @RequestMapping("/")
 public class MainController {
-
 
     @GetMapping(path = {"hello"}, name = "hello-get", produces = "application/json")
     //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
@@ -57,6 +57,35 @@ public class MainController {
         return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
     }
 
+    @GetMapping(path = {"accessToken"}, name = "access-token-get", produces = "application/json")
+    //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
+    public ResponseEntity<HttpResponse> accessToken(HttpServletRequest request,
+                                                    @RequestParam(required = false, defaultValue = "true") boolean featured) {
+
+        String logprefix = request.getRequestURI();
+        HttpResponse response = new HttpResponse(request.getRequestURI());
+        Logger.application.info("Received accessToken Request...");
+        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received accessToken request");
+
+        String basePath = "https://sts-st.deliveryhero.io";
+        ApiClient apiClient = new ApiClient();
+        apiClient.setBasePath(basePath);
+        final LoginApi api = new LoginApi();
+
+        api.setApiClient(apiClient);
+        AccessTokenResponse accTokenresponse = api.accessTokenGet();
+
+        try {
+            response.setData(accTokenresponse.toJSON());
+            return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
+        } catch (Exception exp) {
+            response.setMessage(exp.getMessage());
+            return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
+        }
+
+
+    }
+
     @GetMapping(path = {"login"}, name = "login-get", produces = "application/json")
     //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
     public String login(HttpServletRequest request,
@@ -74,7 +103,6 @@ public class MainController {
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
-
 
         headerParams.add("Content-Type", "application/x-www-form-urlencoded");
 
@@ -102,8 +130,11 @@ public class MainController {
         AccessTokenResponse accTokenResponse = null;
         accTokenResponse = apiClient.invokeAPI(relativePath, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, accessTokenResponse);
 
-        return accTokenResponse.toString();
-        //return ResponseEntity.status(response.getStatus()).body();
+        try {
+            return accTokenResponse.toJSON();
+        } catch (Exception exp) {
+            return "ERROR";
+        }
     }
 
 }

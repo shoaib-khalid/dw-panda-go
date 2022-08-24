@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added OrderController.java">
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="add todo in getPrice endpoint in OrderController.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/LoginApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/AccessTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/AccessTokenResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/AccessTokenResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/AccessTokenResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/sample/controller/MainController.class" afterDir="false" />
     </list>
@@ -110,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661276443549</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add todo in getPrice endpoint in OrderController.java">
+      <created>1661321218222</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1661321218222</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,15 +136,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added login method" />
     <MESSAGE value="Added OrderController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added OrderController.java" />
+    <MESSAGE value="add todo in getPrice endpoint in OrderController.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="add todo in getPrice endpoint in OrderController.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/MainController.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/LoginApi.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
