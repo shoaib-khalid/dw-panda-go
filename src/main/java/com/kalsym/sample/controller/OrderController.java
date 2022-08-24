@@ -1,8 +1,21 @@
 package com.kalsym.sample.controller;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+
 public class OrderController {
 
-    public Object getPrice(String providerConfig, String orderObject, String systemTransactionId, String fulfillment) {
+    //@PreAuthorize("hasAnyAuthority('panda-go-price-get', 'all')")
+    public Object getPrice(HttpServletRequest request,
+                           @RequestParam(required = false, defaultValue = "") String providerConfig,
+                           @RequestParam(required = false, defaultValue = "") String orderObject,
+                           @RequestParam(required = false, defaultValue = "123") String systemTransactionId,
+                           @RequestParam(required = false, defaultValue = "true") String fulfillment) {
+        //TODO: Implement the following flow:
+        // 1. Send Login request
+        // 2. Get Token
+        // 3. Send get Price request
         return null;
     }
 

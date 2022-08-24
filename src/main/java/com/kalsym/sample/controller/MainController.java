@@ -30,8 +30,8 @@ public class MainController {
                                               @RequestParam(required = false, defaultValue = "true") boolean featured) {
         String logprefix = request.getRequestURI();
         HttpResponse response = new HttpResponse(request.getRequestURI());
-        Logger.application.info("Received Hello Request...");
-        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "recieveid hello request");
+        Logger.application.info("Received Hello dw-panda-go Request...");
+        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received hello request");
         response.setStatus(HttpStatus.OK);
 
         return ResponseEntity.status(response.getStatus()).body(response);
@@ -40,50 +40,27 @@ public class MainController {
     @GetMapping(path = {"getAllOutlets"}, name = "outlets-get", produces = "application/json")
     //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
     public ResponseEntity<HttpResponse> getAllOutlets(HttpServletRequest request,
-                                                      @RequestParam(required = false, defaultValue = "true") boolean featured) {
+                                                      @RequestParam(required = false, defaultValue = "") String token) {
         String logprefix = request.getRequestURI();
         HttpResponse response = new HttpResponse(request.getRequestURI());
         Logger.application.info("Received getAllOutlets Request...");
-        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "recieveid getAllOutlets request");
-
+        Logger.application.info(Logger.pattern, Main.VERSION, logprefix, "hello this is INFO log", "received getAllOutlets request");
 
         ApiClient apiClient = new ApiClient();
 
-//        String accessToken = "eyJhbGciOiJQUzI1NiIsImtpZCI6InNlY3VyaXR5LXN0YWdpbmctZXUtc3RzIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9zdHMuZGVsaXZlcnloZXJvLmlvIl0sImV4cCI6MTY2MTI0MDg3MSwiaWF0IjoxNjYxMjM5OTcxLCJpc3MiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8iLCJqdGkiOiIyZTVhODAxZS1kNWI2LTRiMmItYTBkOS1kOWJmM2ZmZDliOGQiLCJuYmYiOjE2NjEyMzk5NzEsInNjcCI6WyJwYW5kYWdvLmFwaS5zZy4qIl0sInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5In0.KAgIiWeyG9v_mDDpktD32UUhpVbgZSzz3tpzgSdk6hzaJ0CX9tnIEXVv0js6fmxL_-ZAKJSEwL6xUvkN3KVUT3enfx6XY1uwgg-gXmvsfxnbGslFBbPjt32o2IL__QcChkg5QPgUvmLYUDEYLtKzpu725GdvCRellXuHDAINPylihggnqvuDFbE_LFaSPQjfJYDFH1L7rERwyxp2r_OxBnxj_uWedS5akWoEW0eBEVg9U2tashoK-u6-bqPGeDfNN_x2s7zK6PeGWHdMx9OOt0r-2uS4gB0KeR0J97pon5pP73UMkchtbrESSpK7hjXrsLWt0A5xOaSKi-4O672gKA";
-//        apiClient.setAccessToken(accessToken);
-//        String path = "/outletList";
-//        HttpMethod getAllOutletList;
-
-        // query params
-//        List<Pair> queryParams = new ArrayList<Pair>();
-//        Map<String, String> headerParams = new HashMap<String, String>();
-//        Map<String, String> formParams = new HashMap<String, String>();
-
-//        final String[] accepts = {
-//                "application/json"
-//        };
-//        List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
-
-
-        //response = apiClient.invokeAPI(path,  HttpMethod.GET, null, null, null,null,accept,null,null,null);
-
-
-        String authorization = "Bearer eyJhbGciOiJQUzI1NiIsImtpZCI6InNlY3VyaXR5LXN0YWdpbmctZXUtc3RzIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9zdHMuZGVsaXZlcnloZXJvLmlvIl0sImV4cCI6MTY2MTI3MjAxOCwiaWF0IjoxNjYxMjcxMTE4LCJpc3MiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8iLCJqdGkiOiI5MTA3YjgzNi1mMTk0LTQ3MGUtOTM2ZC00OWIyYWUyYmZlNmQiLCJuYmYiOjE2NjEyNzExMTgsInNjcCI6WyJwYW5kYWdvLmFwaS5zZy4qIl0sInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5In0.pJcwve7FE4JgRFGbsAeGo39iUZS-ZujcU79Mn716TtgGRVDJY9QjHcEB3kdXa9FXRDoCPZWnZK9A7ub38mM-b7DAWkeENwhwdHg0mNsw3aPtzNmk151sO7Hr7hN_7XoN9gdYX0ZWoRKPTU3bMKx-ELuFJciVEeo_l5TXSLkTbHsUZA3rp5bTOHpkq1GWfjk9arJAEkRFEGRIVLgsx69lC5YzSwrebB279qwvUjpAM6YLSs7aqh0OobLx1Ylew_UbL9XxqUoLhyjFwE-5MlJH2Vv1lVeuF-5IXdPpiQKoHlOZBBQCuSW3_9nGrdaXxb2EzyPxPtmdeLkOTGOLLG8oew";
-        String clientVendorId = null;
+        String authorization = "Bearer " + token;
         final OutletsApi api = new OutletsApi();
+
         api.setApiClient(apiClient);
         OutletListResponse responseOutlet = api.outletListGet(authorization);
 
-
-//        response.setStatus(HttpStatus.OK);
-//
-        return ResponseEntity.status(response.getStatus()).body(response);
+        return ResponseEntity.status(api.getApiClient().getStatusCode()).body(response);
     }
 
     @GetMapping(path = {"login"}, name = "login-get", produces = "application/json")
     //@PreAuthorize("hasAnyAuthority('products-get', 'all')")
     public String login(HttpServletRequest request,
-                                              @RequestParam(required = false, defaultValue = "true") boolean featured) {
+                        @RequestParam(required = false, defaultValue = "true") boolean featured) {
 
         String logprefix = request.getRequestURI();
         HttpResponse response = new HttpResponse(request.getRequestURI());
@@ -117,7 +94,7 @@ public class MainController {
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 
-        String[] authNames = new String[] { "Bearer Token" };
+        String[] authNames = new String[]{"Bearer Token"};
 
         Object postBody = null;
         ParameterizedTypeReference<AccessTokenResponse> accessTokenResponse = new ParameterizedTypeReference<AccessTokenResponse>() {
