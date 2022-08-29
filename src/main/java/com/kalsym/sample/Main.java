@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String... args) {
         System.out.println("Hello spring java...");
-        Logger.application.info("Starting Spring Hello Project...");
+        Logger.application.debug("Starting Panda Go Wrapper...");
         SpringApplication.run(Main.class, args);
-        Logger.application.info("Started Spring Hello Project...");
+        Logger.application.info("Started Panda Go Wrapper...");
     }
 
 }
