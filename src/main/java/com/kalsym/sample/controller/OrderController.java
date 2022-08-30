@@ -20,8 +20,8 @@ public class OrderController {
     @GetMapping(path = {"/getPrice"}, name = "price-get", produces = "application/json")
     public String testPrice(HttpServletRequest request, @RequestBody String order) {
         Logger.application.info("testPrice [:{}], Request Body : {}", order);
-        getPrice("", order, "", "false");
-        return "SUCCESS";
+        BigDecimal fee = (BigDecimal) getPrice("", order, "", "false");
+        return fee.toString();
     }
 
 
@@ -130,6 +130,60 @@ public class OrderController {
 
     }
 
+    @PostMapping(path = {"/placeOrder"}, name = "order-post", produces = "application/json")
+    public String testOrder(HttpServletRequest request, @RequestBody CreateOrderRequest order) {
+        Logger.application.info("placeOrder request received");
+
+        // 1. Send accessToken request
+        AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
+        Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
+
+        // 2. Use token to placeOrder
+        CreateOrderResponse orderResponse = sendPlaceOrderRequest(accTokenresponse.getAccessToken(), order);
+        try {
+            Logger.application.info("Placed order: " + orderResponse.toString());
+        } catch (Exception exp) {
+            Logger.application.error("Exception ", exp);
+        }
+
+        // 3. Return price
+        Logger.application.info("Returning placeOrder response");
+        try {
+            return orderResponse.toJSON();
+        } catch (Exception exp) {
+            Logger.application.error("Exception exp: ", exp);
+            return "ERROR";
+        }
+    }
+
+
+    public CreateOrderResponse sendPlaceOrderRequest(String token, CreateOrderRequest createOrderRequest) {
+
+        Logger.application.info("Deserializing order post request");
+
+        ApiClient apiClient = new ApiClient();
+
+        String authorization = "Bearer " + token;
+        final OrdersApi api = new OrdersApi();
+
+        api.setApiClient(apiClient);
+
+        try {
+            Logger.application.debug("Sending OrderPostRequest: " + createOrderRequest.toJSON());
+        } catch (Exception exp) {
+            Logger.application.error("Exception", exp);
+        }
+
+        CreateOrderResponse orderResponse = null;
+        try {
+            orderResponse = api.ordersPost(authorization, createOrderRequest);
+            Logger.application.debug("EstimateOrderFeeResponse: " + orderResponse.toString());
+        } catch (Exception exp) {
+            Logger.application.error("Exception in EstimateOrderFeeResponse, ", exp);
+        }
+        return orderResponse;
+    }
+
     public Object placeOrder(String providerConfig, String orderObject, String systemTransactionId) {
         return null;
     }
@@ -142,6 +196,22 @@ public class OrderController {
     public Object getAddressId(String systemTransactionId, String address, String url, String key) {
         return null;
     }
+
+
+    @GetMapping(path = {"/orderStatus"}, name = "order-status", produces = "application/json")
+    public String testOrderStatus(HttpServletRequest request, @RequestParam String orderId) {
+
+        Logger.application.debug("OrderStatus, orderId: {}", orderId);
+        // 1. Send accessToken request
+        AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
+        Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
+
+
+
+        return "Method not implemented yet";
+    }
+
+
 
 
 }

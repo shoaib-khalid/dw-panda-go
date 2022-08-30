@@ -4,32 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Extracted internal methods for resusibility in MainController">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/wrapper/Delivery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/wrapper/GetPrice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/wrapper/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/utility/LoggingInterceptor.java" afterDir="false" />
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="interim commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/wrapper/PlaceOrderRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/EstimateOrderFeeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/EstimateOrderFeeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/EstimateOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/EstimateOrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrderResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrderResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient$ApiClientHttpRequestInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient$ApiClientHttpRequestInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient$CollectionFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient$CollectionFormat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/invoker/ApiClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/EstimateOrderFeeResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/EstimateOrderFeeResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/EstimateOrderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/EstimateOrderRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/sample/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661346080382</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added getPrice endpoint">
+      <created>1661766515377</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1661766515377</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,7 +162,9 @@
     <MESSAGE value="add todo in getPrice endpoint in OrderController.java" />
     <MESSAGE value="Added accessToken endpoint" />
     <MESSAGE value="Extracted internal methods for resusibility in MainController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extracted internal methods for resusibility in MainController" />
+    <MESSAGE value="Added getPrice endpoint" />
+    <MESSAGE value="interim commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="interim commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -193,11 +183,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java</url>
           <line>59</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java</url>
-          <line>532</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/utility/LoggingInterceptor.java</url>
@@ -230,9 +215,19 @@
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java</url>
+          <line>178</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java</url>
-          <line>548</line>
-          <option name="timeStamp" value="25" />
+          <line>529</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

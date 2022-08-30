@@ -14,6 +14,8 @@
 package com.kalsym.pandago.client.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -256,6 +258,16 @@ public class CreateOrderRequest {
     sb.append("    deliveryTasks: ").append(toIndentedString(deliveryTasks)).append("\n");
     sb.append("}");
     return sb.toString();
+  }
+
+  public String toJSON() throws JsonProcessingException {
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      String json = mapper.writeValueAsString(this);
+      return json;
+    } catch (JsonProcessingException e) {
+      throw e;
+    }
   }
 
   /**
