@@ -16,6 +16,8 @@ package com.kalsym.pandago.client.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Objects;
@@ -110,6 +112,16 @@ public class CancelOrderRequest {
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
+  }
+
+  public String toJSON() throws JsonProcessingException {
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      String json = mapper.writeValueAsString(this);
+      return json;
+    } catch (JsonProcessingException e) {
+      throw e;
+    }
   }
 
   /**

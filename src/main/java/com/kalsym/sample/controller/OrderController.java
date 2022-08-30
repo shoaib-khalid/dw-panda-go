@@ -197,21 +197,59 @@ public class OrderController {
         return null;
     }
 
-
-    @GetMapping(path = {"/orderStatus"}, name = "order-status", produces = "application/json")
-    public String testOrderStatus(HttpServletRequest request, @RequestParam String orderId) {
+    @GetMapping(path = {"/orderStatus/{orderId}"}, name = "order-status", produces = "application/json")
+    public String testOrderStatus(HttpServletRequest request, @PathVariable String orderId) {
 
         Logger.application.debug("OrderStatus, orderId: {}", orderId);
         // 1. Send accessToken request
         AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
         Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
 
+        // 2. Get order status
+        String token = accTokenresponse.getAccessToken();
+        ApiClient apiClient = new ApiClient();
 
+        String authorization = "Bearer " + token;
+        final OrdersApi api = new OrdersApi();
 
-        return "Method not implemented yet";
+        api.setApiClient(apiClient);
+        GetOrderResponse orderResponse = api.ordersOrderIdGet(authorization, orderId);
+        try {
+            return orderResponse.toJSON();
+        } catch (Exception exp) {
+            Logger.application.error("Exception in order status: ", exp);
+            return "ERROR in order get";
+        }
     }
 
+    @DeleteMapping(path = {"/orderStatus"}, name = "order-del", produces = "application/json")
+    public String delOrder(HttpServletRequest request, @RequestParam String orderId, @RequestParam String reason) {
+        Logger.application.debug("del OrderStatus, orderId: {}", orderId);
 
+        // 1. Send accessToken request
+        AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
+        Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
 
+        // 2. Get order status
+        String token = accTokenresponse.getAccessToken();
+        ApiClient apiClient = new ApiClient();
 
+        String authorization = "Bearer " + token;
+        final OrdersApi api = new OrdersApi();
+
+        api.setApiClient(apiClient);
+        CancelOrderRequest cancelOrderRequest = new CancelOrderRequest();
+        CancelOrderRequest.ReasonEnum reasonEnum = CancelOrderRequest.ReasonEnum.fromValue(reason);
+        if (reasonEnum == null) {
+            return "Wrong reason provided";
+        }
+        cancelOrderRequest.setReason(reasonEnum);
+        ErrorResponse errorResponse = api.ordersOrderIdDelete(authorization, orderId, cancelOrderRequest);
+        try {
+            return errorResponse.toJSON();
+        } catch (Exception exp) {
+            Logger.application.error("Exception in order status: ", exp);
+            return "ERROR in order delete";
+        }
+    }
 }
