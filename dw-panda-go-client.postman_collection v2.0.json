@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "658d6876-3f29-47bc-a19c-1a826a527f9c",
+		"name": "dw-panda-go-client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18199952"
+	},
+	"item": [
+		{
+			"name": "GetToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "pandago:sg:349c98a1-92ef-43f2-b262-c1905cc133b9",
+							"type": "text"
+						},
+						{
+							"key": "client_assertion_type",
+							"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+							"type": "text"
+						},
+						{
+							"key": "client_assertion",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYyNDRmOTI4LWVmOTYtNGZhYi1hODA3LTc5MDM4YWQ5MzA0MiJ9.eyJpc3MiOiJwYW5kYWdvOnNnOjM0OWM5OGExLTkyZWYtNDNmMi1iMjYyLWMxOTA1Y2MxMzNiOSIsInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5IiwianRpIjoiYTg4MTE3ZDAtMWUxZC0xMWVkLTg2MWQtMDI0MmFjMTI4NjAyIiwiZXhwIjoxNjkwOTMyMDgyLCJhdWQiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8ifQ.ts1w86TPedFuAvIrhEVdzOWmUJ17gEktmuCohAfsRys47HDmsMn1-wHSzm8P09p1eZmYBgydHIpHasB1AT_PvXB2uxDUpfyFw1hBuldzBFi4YZNcSnyGnjnwv7YvmP8GRNQ8nrY1tBNkup83QxUq56qN8ow59FkdY-pGwBWLJbFksZ-BBLOCwG1lxAIYZ24vcVceNYu9hHCcuFrmUOVQeUuQ6RTJNUoMDuuLTrmpP3yf9t7OfsDsChDXTQM6GWxCAtRFtEHDbdIpYrT6IwKL8iVdYWmGK-LwurAe23plqwWKAkHzT2AkKQ_O3rHHykUPvBlDN8yJjrLL7ivMmKmtQA",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "pandago.api.sg.*",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://sts-st.deliveryhero.io/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"sts-st",
+						"deliveryhero",
+						"io"
+					],
+					"path": [
+						"oauth2",
+						"token"
+					]
+				},
+				"description": "asgahaerhera sfgerear"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOutlets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6001/getAllOutlets?token=eyJhbGciOiJQUzI1NiIsImtpZCI6InNlY3VyaXR5LXN0YWdpbmctZXUtc3RzIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9zdHMuZGVsaXZlcnloZXJvLmlvIl0sImV4cCI6MTY2MTM0NjE1MywiaWF0IjoxNjYxMzQ1MjUzLCJpc3MiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8iLCJqdGkiOiJhYTNmYWI2MC1hNGFiLTQwMTYtYmZjOS05MzRjYTA5OGNlNTMiLCJuYmYiOjE2NjEzNDUyNTMsInNjcCI6WyJwYW5kYWdvLmFwaS5zZy4qIl0sInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5In0.ssGwKSMHiDtaljJXs8e6onFk6oFb7EnLZbHFn4SrlV5iqACG04oWVMIR1qo6rFSGU646tfETiu50ZkXKqWYHMQ2oLyqZRtBztFJYrF9eOPrUar7cBkXza3k2RUsbLGaQMnL1Y5kYhwYM_-ehi06gX-KQTNKiA8BLinjxsl5vJXDJflp72b_PvDJ3y1H-RL8X3iT8bngms0PFqT3W-ze4TW0R6wjn2ptK6mArJo1XCqy8TdseWR0WoAEPRHePCrO6s1pOk_VS2J9YujK_9xbFIz8PkWhokrjeFWPrHHyccpw66voIOIWRkO2xIU3PH_mX4nfJ0cVfQQCRn7zqSkmy7Q",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"getAllOutlets"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJQUzI1NiIsImtpZCI6InNlY3VyaXR5LXN0YWdpbmctZXUtc3RzIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9zdHMuZGVsaXZlcnloZXJvLmlvIl0sImV4cCI6MTY2MTM0NjE1MywiaWF0IjoxNjYxMzQ1MjUzLCJpc3MiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8iLCJqdGkiOiJhYTNmYWI2MC1hNGFiLTQwMTYtYmZjOS05MzRjYTA5OGNlNTMiLCJuYmYiOjE2NjEzNDUyNTMsInNjcCI6WyJwYW5kYWdvLmFwaS5zZy4qIl0sInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5In0.ssGwKSMHiDtaljJXs8e6onFk6oFb7EnLZbHFn4SrlV5iqACG04oWVMIR1qo6rFSGU646tfETiu50ZkXKqWYHMQ2oLyqZRtBztFJYrF9eOPrUar7cBkXza3k2RUsbLGaQMnL1Y5kYhwYM_-ehi06gX-KQTNKiA8BLinjxsl5vJXDJflp72b_PvDJ3y1H-RL8X3iT8bngms0PFqT3W-ze4TW0R6wjn2ptK6mArJo1XCqy8TdseWR0WoAEPRHePCrO6s1pOk_VS2J9YujK_9xbFIz8PkWhokrjeFWPrHHyccpw66voIOIWRkO2xIU3PH_mX4nfJ0cVfQQCRn7zqSkmy7Q"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrice",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"customerId\":\"123\",\r\n    \"merchantId\":456,\r\n    \"orderId\": \"123456\",\r\n    \"delivery\" : {\r\n        \"deliveryAddress\": \"This is delivery address\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6001/order/getPrice",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"order",
+						"getPrice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accessToken",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6001/accessToken",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"accessToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlaceOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJQUzI1NiIsImtpZCI6InNlY3VyaXR5LXN0YWdpbmctZXUtc3RzIiwidHlwIjoiSldUIn0.eyJhdWQiOlsiaHR0cHM6Ly9zdHMuZGVsaXZlcnloZXJvLmlvIl0sImV4cCI6MTY2MTc3MjM3MSwiaWF0IjoxNjYxNzcxNDcxLCJpc3MiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8iLCJqdGkiOiIzOGNjN2RhNy1iYjAwLTRjZGUtYjVlMy1kNGRhYWI0ZDUzOTciLCJuYmYiOjE2NjE3NzE0NzEsInNjcCI6WyJwYW5kYWdvLmFwaS5zZy4qIl0sInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5In0.dhwuUW-0GZZbjrrQx_K9WJKyEo33_2O_dvXQ7CESmcF3PGJTaBGUm5ZOJK_-mjaFTRjguyKNrV4IN_0qenc5s3BKNTXXGEqW0tmTjrsLxfXuZpZqEsl8Roo-Ml55GsRXoJV-Cp350uQtElwljWMeyCoAMDdxY5rpreNMTi0qhFJFtYFd0bly2ZmvGbQQW2LoBjnk7v3lqxEUMqi5NbiOP-G2lCsjV3mT1em-ZnnTqvV0Rz9k40XlZ5tS84_tQ8681p_FbtY7insOPZMbxe57ZzZ0ZOT8EgCt4lkfp5omQc9kiovfjwzQuVfJDgvaZSt_waWDA9RgIgKTt8DwjAIgRA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sender\": {\r\n        \"name\": \"Pandago\",\r\n        \"phone_number\": \"+6500000000\",\r\n        \"location\": {\r\n            \"address\": \"This is delivery address\",\r\n            \"latitude\": 33.6921754418633128125293296761810779571533203125,\r\n            \"longitude\": 73.057014497403628183747059665620326995849609375,\r\n            \"postalcode\": null\r\n        },\r\n        \"notes\": \"use the left side door\"\r\n    },\r\n    \"recipient\": {\r\n        \"name\": \"Merlion\",\r\n        \"phone_number\": \"+6500000000\",\r\n        \"location\": {\r\n            \"address\": \"Butt Karahi Tikka\",\r\n            \"latitude\": 33.68512304987439875958443735726177692413330078125,\r\n            \"longitude\": 73.0435068932674056441101129166781902313232421875,\r\n            \"postalcode\": null\r\n        },\r\n        \"notes\": \"use lift A and leave at the front door\"\r\n    },\r\n    \"amount\": 23.5,\r\n    \"payment_method\": \"PAID\",\r\n    \"description\": \"Refreshing drink\",\r\n    \"delivery_tasks\": {\r\n        \"age_validation_required\": false\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6001/order/placeOrder",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"order",
+						"placeOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OrderStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6001/order/orderStatus",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"order",
+						"orderStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create or Update Store",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Kalsym HQ3\",\r\n  \"address\": \"Street #22 G-8/4, I&T Center \",\r\n  \"latitude\": 33.69217544186331,\r\n  \"longitude\": 73.05701449740363,\r\n  \"city\": \"Islamabad\",\r\n  \"phone_number\": \"+6587654323\",\r\n  \"currency\": \"PKR\",\r\n  \"locale\": \"en-SG\",\r\n  \"description\": \"This is the HQ of Kalsym 3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6001/store/KalsymHQ3",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"store",
+						"KalsymHQ3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6001/store/KalsymHQ2",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"store",
+						"KalsymHQ2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

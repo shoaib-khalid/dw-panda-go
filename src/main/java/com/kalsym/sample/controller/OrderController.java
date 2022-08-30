@@ -7,6 +7,7 @@ import com.kalsym.pandago.client.invoker.ApiClient;
 import com.kalsym.pandago.client.model.*;
 import com.kalsym.sample.utility.Logger;
 import org.apache.commons.logging.Log;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import com.kalsym.pandago.client.model.wrapper.Order;
 
@@ -126,6 +127,7 @@ public class OrderController {
         } catch (Exception exp) {
             Logger.application.error("Exception", exp);
         }
+        // Todo: Need to modify according to the caller expectation.
         return estimatedFeeResponse;
 
     }
@@ -252,4 +254,13 @@ public class OrderController {
             return "ERROR in order delete";
         }
     }
-}
+
+//    @PostMapping(path = {"/addStore/{storeId}"}, name = "store-add", produces = "application/json")
+//    public String addStore(HttpServletRequest request, @PathVariable String storeId, @RequestBody CreateOrUpdateOutletRequest outletRequest) {
+//        Logger.application.debug("Request addStore: ", outletRequest);
+//
+//        return addOrUpdateStore(storeId, outletRequest);
+//
+//    }
+
+ }

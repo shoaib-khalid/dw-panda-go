@@ -1,43 +1,29 @@
 |+++++++++++++++++++++++++++++++++++++++++|
-|spring-boot-sample  Version 1.0-SNAPSHOT |
-|Date Release : 04-07-2022                |
+|dw-panda-go  Version 2.0-SNAPSHOT		  |
+|Date Release : 30-08-2022                |
 |Developer : Shoaib			              |
 |+++++++++++++++++++++++++++++++++++++++++|
 
-1. Uses logback to write logs to desired directory, follows this tutorial: https://www.baeldung.com/spring-boot-logging
-2. Configures logback file's path through run.sh
-3. Uses a sample controller to receive a sample http GET request and prints logs
-4. The main file should be in the top most package for spring application to work properly, i.e. all the other packages should be on a lower hierarical level than the main package which has the main class.
-5. logback-spring.xml and application.properties is placed in the root folder of the project and not in the resources folder.
-6. If logback-spring.xml file's path is passed via the "logback.configurationFile" variable while starting the vm, like this: java -jar -Dlogback.configurationFile=./logback-spring.xml spring-boot-sample-1.0-SNAPSHOT.jar, it will not work for spring. To make it work for spring it needs to be specified in the application.properties file like this: logging.config=./logback-spring.xml
-7. Following is the block in pom.xml which is written to copy the application.properties and logback-spring.xml to the target (output) directory:
-	<build>
-		<plugins>
-			<plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/</directory>
-                                    <includes>
-                                        <include>**/application.properties</include>
-                                        <include>**/logback-spring.xml</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+1. Downloaded the swagger file from: https://pandago.docs.apiary.io/api-description-document
+2. Converted the yaml file to json
+3. Generated the java class files from: https://www.baeldung.com/spring-boot-rest-client-swagger-codegen
+4. Created OrderController, StoreController
+5. Added Todo in the OrderController which are hardcoded values, find them in View | Tool Windows | TODO in IntelliJ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

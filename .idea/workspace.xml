@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="interim commit">
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added order get and delete">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/StoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CancelOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CancelOrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/GetOrderResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/GetOrderResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReleaseNotes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logback.xml_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logback.xml__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/Outlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/Outlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrderRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrderResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrderResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest$ReasonEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest$ReasonEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/ErrorResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/ErrorResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/GetOrderResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/GetOrderResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/Outlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/Outlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661834451378</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added order get and delete">
+      <created>1661841600099</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661841600099</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,14 +187,15 @@
     <MESSAGE value="Extracted internal methods for resusibility in MainController" />
     <MESSAGE value="Added getPrice endpoint" />
     <MESSAGE value="interim commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="interim commit" />
+    <MESSAGE value="Added order get and delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added order get and delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java</url>
-          <line>59</line>
+          <line>60</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -224,12 +240,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java</url>
-          <line>134</line>
+          <line>136</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java</url>
-          <line>178</line>
+          <line>180</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
