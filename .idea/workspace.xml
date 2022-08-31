@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added StoreController.java and two end points">
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added the callback receiving controller and endpoint">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/CallbackController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/CallbackApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/CallbackApi.java" afterDir="false" />
@@ -161,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661862614661</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added the callback receiving controller and endpoint">
+      <created>1661952940471</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1661952940471</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,7 +192,8 @@
     <MESSAGE value="interim commit" />
     <MESSAGE value="Added order get and delete" />
     <MESSAGE value="Added StoreController.java and two end points" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added StoreController.java and two end points" />
+    <MESSAGE value="Added the callback receiving controller and endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the callback receiving controller and endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
