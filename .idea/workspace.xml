@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added order get and delete">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/StoreController.java" afterDir="false" />
+    <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added StoreController.java and two end points">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/CallbackController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReleaseNotes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ReleaseNotes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logback.xml_" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logback.xml__" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/Outlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/Outlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/sample/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest$ReasonEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest$ReasonEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CancelOrderRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/CreateOrUpdateOutletRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/ErrorResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/ErrorResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/GetOrderResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/GetOrderResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/Outlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/model/Outlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/CallbackApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/CallbackApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CallbackRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/CallbackRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661841600099</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added StoreController.java and two end points">
+      <created>1661862614661</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661862614661</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,7 +184,8 @@
     <MESSAGE value="Added getPrice endpoint" />
     <MESSAGE value="interim commit" />
     <MESSAGE value="Added order get and delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added order get and delete" />
+    <MESSAGE value="Added StoreController.java and two end points" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added StoreController.java and two end points" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
