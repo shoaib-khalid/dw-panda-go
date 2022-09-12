@@ -1,9 +1,9 @@
 package com.kalsym.pandago.client.api;
 
+import com.kalsym.deliveryService.utility.Logger;
 import com.kalsym.pandago.client.invoker.ApiClient;
 import com.kalsym.pandago.client.model.*;
-import com.kalsym.pandago.client.model.*;
-import com.kalsym.sample.utility.Logger;
+import com.kalsym.pandago.client.model.wrapper.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +17,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -279,7 +280,7 @@ public class OrdersApi {
      * @return CreateOrderResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public CreateOrderResponse ordersPost(String authorization, CreateOrderRequest body) throws RestClientException {
+    public CreateOrderResponse ordersPost(String authorization, Order body) throws RestClientException {
         Object postBody = body;
 
         // verify the required parameter 'authorization' is set
@@ -291,6 +292,53 @@ public class OrdersApi {
         if (body == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling ordersPost");
         }
+        CreateOrderRequest request = new CreateOrderRequest();
+        Sender sender = new Sender();
+        Location pickup = new Location();
+        request.setClientOrderId(body.getTransactionId());
+        sender.setClientVendorId(body.getPickup().getCostCenterCode());
+        sender.setName(body.getPickup().getPickupContactName());
+        if (body.getPickup().getPickupContactPhone().startsWith("+")) {
+            sender.setPhoneNumber(body.getPickup().getPickupContactPhone());
+        }else if(body.getPickup().getPickupContactPhone().startsWith("6")){
+            sender.setPhoneNumber("+" + body.getPickup().getPickupContactPhone());
+        }else{
+            sender.setPhoneNumber("+6" + body.getPickup().getPickupContactPhone());
+        }
+        pickup.setAddress(body.getPickup().getPickupAddress());
+        pickup.setLatitude(body.getPickup().getLatitude());
+        pickup.setLongitude(body.getPickup().getLongitude());
+        pickup.setPostalcode(body.getPickup().getPickupPostcode());
+        sender.setNotes("Please Call Before Pickup");
+        sender.setLocation(pickup);
+        request.setSender(sender);
+        Contact customer = new Contact();
+        Location delivery = new Location();
+        customer.setName(body.getDelivery().getDeliveryContactName());
+        if (body.getDelivery().getDeliveryContactPhone().startsWith("+")) {
+            customer.setPhoneNumber(body.getDelivery().getDeliveryContactPhone());
+        } else if (body.getDelivery().getDeliveryContactPhone().startsWith("6")) {
+            customer.setPhoneNumber("+" + body.getDelivery().getDeliveryContactPhone());
+        } else {
+            customer.setPhoneNumber("+6" + body.getDelivery().getDeliveryContactPhone());
+        }
+        delivery.setAddress(body.getDelivery().getDeliveryAddress());
+        delivery.setLongitude(body.getDelivery().getLongitude());
+        delivery.setLatitude(body.getDelivery().getLatitude());
+        delivery.setPostalcode(body.getDelivery().getDeliveryPostcode());
+        customer.setLocation(delivery);
+        customer.setNotes("se lift A and leave at the front door");
+        request.setRecipient(customer);
+        if (body.getPaymentType().equals("COD")) {
+            request.setPaymentMethod(PaymentMethod.CASH_ON_DELIVERY);
+            request.setAmount(BigDecimal.valueOf(body.getOrderAmount()));
+        } else {
+            request.setPaymentMethod(PaymentMethod.PAID);
+        }
+        request.setDescription("Refreshing Drinks");
+        DeliveryTasks tasks = new DeliveryTasks();
+        tasks.setAgeValidationRequired(false);
+        request.setDeliveryTasks(tasks);
 
         String path = UriComponentsBuilder.fromPath("/orders").build().toUriString();
 
@@ -314,7 +362,7 @@ public class OrdersApi {
 
         ParameterizedTypeReference<CreateOrderResponse> returnType = new ParameterizedTypeReference<CreateOrderResponse>() {
         };
-        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, request, headerParams, formParams, accept, contentType, authNames, returnType);
     }
 
     /**

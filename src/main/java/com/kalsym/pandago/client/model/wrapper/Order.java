@@ -5,6 +5,8 @@ package com.kalsym.pandago.client.model.wrapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -50,7 +52,7 @@ public class Order {
     @JsonProperty("cartId")
     String cartId;
 
-    //    Pickup pickup;
+        Pickup pickup;
 //    @Valid
     Delivery delivery;
     @JsonProperty("regionCountry")
@@ -82,5 +84,10 @@ public class Order {
     BigDecimal codAmount;
     @JsonProperty("totalParcel")
     Integer totalParcel;
+
+    public String toString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(this);
+    }
 
 }

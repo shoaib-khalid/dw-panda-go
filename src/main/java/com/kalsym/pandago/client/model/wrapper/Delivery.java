@@ -5,8 +5,13 @@
 package com.kalsym.pandago.client.model.wrapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 //import javax.validation.constraints.NotBlank;
 
@@ -17,24 +22,44 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Delivery {
-//    @NotBlank(message = "deliveryAddress is mandatory")
+
+    @JsonProperty("deliveryAddress")
     String deliveryAddress;
-//    @NotBlank(message = "deliveryPostcode is mandatory")
+
+    @JsonProperty("deliveryPostcode")
     String deliveryPostcode;
-//    @NotBlank(message = "deliveryState is mandatory")
+
+    @JsonProperty("deliveryState")
     String deliveryState;
-//    @NotBlank(message = "deliveryCity is mandatory")
+
+    @JsonProperty("deliveryCity")
     String deliveryCity;
 
-//    @NotBlank(message = "deliveryCountry is mandatory")
+    @JsonProperty("deliveryCountry")
     String deliveryCountry;
 
-//    @NotBlank(message = "deliveryContactName is mandatory")
+    @JsonProperty("deliveryContactName")
     String deliveryContactName;
-//    @NotBlank(message = "deliveryContactPhone is mandatory")
+
+    @JsonProperty("deliveryContactPhone")
     String deliveryContactPhone;
-//    @NotBlank(message = "deliveryContactEmail is mandatory")
+
+    @JsonProperty("deliveryContactEmail")
     String deliveryContactEmail;
+
+    @JsonProperty("deliveryZone")
     String deliveryZone;
+
+    @JsonProperty("latitude")
+    BigDecimal latitude;
+
+
+    @JsonProperty("longitude")
+    BigDecimal longitude;
+
+    public String toString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(this);
+    }
 
 }

@@ -1,12 +1,13 @@
 package com.kalsym.pandago.client.invoker;
 
+import com.kalsym.deliveryService.Main;
 import com.kalsym.pandago.client.invoker.auth.ApiKeyAuth;
 import com.kalsym.pandago.client.invoker.auth.Authentication;
 import com.kalsym.pandago.client.invoker.auth.HttpBasicAuth;
 import com.kalsym.pandago.client.invoker.auth.OAuth;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.threetenbp.ThreeTenModule;
-import com.kalsym.sample.utility.Logger;
+import com.kalsym.deliveryService.utility.Logger;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -31,7 +33,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-08-23T10:38:41.071+05:00")
 @Component("com.baeldung.petstore.client.invoker.ApiClient")
@@ -525,9 +526,9 @@ public class ApiClient {
         addHeadersToRequest(defaultHeaders, requestBuilder);
 
         RequestEntity<Object> requestEntity = requestBuilder.body(selectBody(body, formParams, contentType));
-
-
-        ResponseEntity<T> responseEntity = restTemplate.exchange(requestEntity, returnType);
+        ResponseEntity<T> responseEntity = null;
+        try {
+            responseEntity = restTemplate.exchange(requestEntity, returnType);
 
 //        if (Logger.application.isDebugEnabled()) {
 //            InputStreamReader isr = new InputStreamReader((InputStream) responseEntity.getBody(), StandardCharsets.UTF_8);
@@ -537,19 +538,31 @@ public class ApiClient {
 //            Logger.application.debug("Response body: {}", responseBody);
 //        }
 
-        statusCode = responseEntity.getStatusCode();
-        responseHeaders = responseEntity.getHeaders();
+            statusCode = responseEntity.getStatusCode();
+            responseHeaders = responseEntity.getHeaders();
 
-        if (responseEntity.getStatusCode() == HttpStatus.NO_CONTENT) {
-            return null;
-        } else if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            if (returnType == null) {
+            if (responseEntity.getStatusCode() == HttpStatus.NO_CONTENT) {
                 return null;
+            } else if (responseEntity.getStatusCode().is2xxSuccessful()) {
+                if (returnType == null) {
+                    return null;
+                }
+
+                Logger.application.info(Logger.pattern, Main.VERSION, "APICLIENT", " Response Body : " + responseEntity.getBody());
+
+
+                return responseEntity.getBody();
+            } else {
+                Logger.application.info(Logger.pattern, Main.VERSION, "APICLIENT", " Error Body : " + responseEntity.getBody());
+
+
+                // The error handler built into the RestTemplate should handle 400 and 500 series errors.
+                throw new RestClientException("API returned " + statusCode + " and it wasn't handled by the RestTemplate error handler");
             }
-            return responseEntity.getBody();
-        } else {
-            // The error handler built into the RestTemplate should handle 400 and 500 series errors.
-            throw new RestClientException("API returned " + statusCode + " and it wasn't handled by the RestTemplate error handler");
+        } catch (Exception exception) {
+
+            Logger.application.info(Logger.pattern, Main.VERSION, "APICLIENT", " Exception Body : " + exception.getMessage());
+            return null;
         }
     }
 

@@ -23,7 +23,7 @@ import java.util.Objects;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-08-23T10:38:41.071+05:00")
 public class Timeline {
-  @JsonProperty("estimated_pickup_time")
+  @JsonProperty("extimated_pickup_time")
   private String estimatedPickupTime = null;
 
   @JsonProperty("estimated_delivery_time")

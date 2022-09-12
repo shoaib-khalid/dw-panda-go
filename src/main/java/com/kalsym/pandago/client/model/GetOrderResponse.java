@@ -71,6 +71,9 @@ public class GetOrderResponse {
     @JsonProperty("updated_at")
     private Long updatedAt = null;
 
+    @JsonProperty("tracking_link")
+    String trackingLink;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
