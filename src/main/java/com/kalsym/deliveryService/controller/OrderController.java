@@ -450,12 +450,17 @@ public class OrderController {
         ObjectMapper mapper = new ObjectMapper();
         CallbackRequest callbackRequest;
 
-        callbackRequest = mapper.convertValue(requestBody, CallbackRequest.class);
-        Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Response : " + callbackRequest.toString());
+        try {
+            callbackRequest = mapper.convertValue(requestBody, CallbackRequest.class);
+            Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Response : " + callbackRequest.toString());
+            SpCallbackResult spCallbackResult = callback(callbackRequest);
+            response.setReturnObject(spCallbackResult);
+            response.setResultCode(0);
 
-        SpCallbackResult spCallbackResult = callback(callbackRequest);
-        response.setReturnObject(spCallbackResult);
-        response.setResultCode(0);
+        } catch (Exception exception) {
+            Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Exception : " + exception.getMessage());
+        }
+
 
         return new JSONObject(new Gson().toJson(response));
     }
@@ -468,13 +473,13 @@ public class OrderController {
 
         String status = request.getStatus().name();
         String spOrderId = request.getOrderId();
-        String driverId = "";
-        String systemStatus = "";
+        String driverId = null;
+        String systemStatus = null;
 
-        String riderName = "";
-        String riderPhone = "";
-        String carNoPlate = "";
-        String trackingLink = "";
+        String riderName = null;
+        String riderPhone = null;
+        String carNoPlate = null;
+        String trackingLink = null;
 
         switch (status) {
             case "NEW":
@@ -504,6 +509,7 @@ public class OrderController {
                 systemStatus = DeliveryCompletionStatus.CANCELED.name();
                 break;
         }
+        Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "driverId : " + driverId + " & riderName :" + riderName + " & riderPhone : " + riderPhone);
 
 
         spCallbackResult.setSpOrderId(spOrderId);
