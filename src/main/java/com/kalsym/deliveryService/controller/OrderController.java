@@ -468,7 +468,6 @@ public class OrderController {
 
     public SpCallbackResult callback(CallbackRequest request) {
 
-        ProcessResult result = new ProcessResult();
         SpCallbackResult spCallbackResult = new SpCallbackResult();
 
         String status = request.getStatus().name();
@@ -493,12 +492,19 @@ public class OrderController {
                 driverId = request.getDriver().getId();
                 riderName = request.getDriver().getName();
                 riderPhone = request.getDriver().getPhoneNumber();
+                Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url :::: " +request.getTrackingLink());
+
+                trackingLink = request.getTrackingLink();
                 systemStatus = DeliveryCompletionStatus.AWAITING_PICKUP.name();
                 break;
             case "PICKED_UP":
             case "COURIER_LEFT_VENDOR":
             case "NEAR_CUSTOMER":
             case "DELAYED":
+                driverId = request.getDriver().getId();
+                riderName = request.getDriver().getName();
+                riderPhone = request.getDriver().getPhoneNumber();
+                trackingLink = request.getTrackingLink();
                 systemStatus = DeliveryCompletionStatus.BEING_DELIVERED.name();
                 break;
             case "DELIVERED":
@@ -511,6 +517,7 @@ public class OrderController {
         }
         Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "driverId : " + driverId + " & riderName :" + riderName + " & riderPhone : " + riderPhone);
 
+        Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url : " +trackingLink);
 
         spCallbackResult.setSpOrderId(spOrderId);
         spCallbackResult.setStatus(status);
@@ -522,6 +529,7 @@ public class OrderController {
         spCallbackResult.setDriveNoPlate(carNoPlate);
         spCallbackResult.setResultCode(0);
 
+        Logger.application.info(Logger.pattern, Main.VERSION, "Return To Callback To Delivery Service ", "SpCallbackResult :: " + spCallbackResult.toString());
 
         return spCallbackResult;
     }
