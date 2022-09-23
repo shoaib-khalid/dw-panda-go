@@ -6,6 +6,7 @@ com\kalsym\pandago\client\model\Source.class
 com\kalsym\pandago\client\model\CreateOrderResponse.class
 com\kalsym\pandago\client\model\Error500ResponseArray.class
 com\kalsym\deliveryService\controller\MainController.class
+com\kalsym\pandago\client\model\wrapper\ProviderConfigs.class
 com\kalsym\pandago\client\api\OutletsApi$1.class
 com\kalsym\pandago\client\model\wrapper\Order.class
 com\kalsym\pandago\client\invoker\CustomInstantDeserializer$11.class

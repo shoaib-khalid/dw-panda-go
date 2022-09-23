@@ -1,5 +1,6 @@
 package com.kalsym.pandago.client.api;
 
+import com.kalsym.deliveryService.Main;
 import com.kalsym.deliveryService.utility.Logger;
 import com.kalsym.pandago.client.invoker.ApiClient;
 import com.kalsym.pandago.client.model.*;
@@ -94,7 +95,9 @@ public class OrdersApi {
 
         ParameterizedTypeReference<EstimateOrderFeeResponse> returnType = new ParameterizedTypeReference<EstimateOrderFeeResponse>() {
         };
-        Logger.application.info("apiClient: " + apiClient.toString());
+
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrdersApi", " Request body : " + postBody);
+
         return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
 

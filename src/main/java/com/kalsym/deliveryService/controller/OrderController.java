@@ -129,11 +129,12 @@ public class OrderController {
         Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
 
         JsonObject jsonResp = new Gson().fromJson(fulfillment, JsonObject.class);
+        JsonObject providerConfigs = new Gson().fromJson(providerConfig, JsonObject.class);
         JsonObject orders = new Gson().fromJson(order, JsonObject.class);
         Logger.application.info("orders ::: [" + orders + "]");
 
         // 2. Use token to getPrice
-        EstimateOrderFeeResponse orderRequest = sendOrderFeeRequest(accTokenresponse.getAccessToken(), orders.toString());
+        EstimateOrderFeeResponse orderRequest = sendOrderFeeRequest(accTokenresponse.getAccessToken(), orders.toString(), providerConfigs.toString());
         PriceResult result = new PriceResult();
         result.setPrice(orderRequest.getEstimateDeliveryFee());
         result.setFulfillment(jsonResp.get("fulfillment").getAsString());
@@ -153,17 +154,18 @@ public class OrderController {
         return new JSONObject(new Gson().toJson(response));
     }
 
-    public EstimateOrderFeeResponse sendOrderFeeRequest(String token, String orderObjectJSON) {
+    public EstimateOrderFeeResponse sendOrderFeeRequest(String token, String orderObjectJSON, String providerConfigs) {
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", " providerConfigs: " + providerConfigs);
 
         Logger.application.info("Deserializing order from request");
         ObjectMapper objectMapper = new ObjectMapper();
         Order order = null;
         try {
             order = objectMapper.readValue(orderObjectJSON, Order.class);
-            Logger.application.info("ORDER : [" + order.toString() + "]");
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "ORDER : [" + order.toString() + "]");
 
         } catch (Exception exp) {
-            Logger.application.error("Exception in mapping the Order class", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in mapping the Order class", exp);
         }
         EstimateOrderRequest orderRequest = new EstimateOrderRequest();
 
@@ -172,7 +174,7 @@ public class OrderController {
         //////////////// SENDER  ///////////////////////////////////
         Sender sender = new Sender();
         sender.setName(order.getPickup().getPickupContactName());
-        sender.setClientVendorId(order.getPickup().getCostCenterCode());
+        sender.setClientVendorId(null);
 
         if (order.getPickup().getPickupContactPhone().startsWith("+")) {
             sender.setPhoneNumber(order.getPickup().getPickupContactPhone());
@@ -233,16 +235,16 @@ public class OrderController {
         api.setApiClient(apiClient);
 
         try {
-            Logger.application.debug("Sending OrderRequest: " + orderRequest.toJSON());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", " Request: " + orderRequest.toJSON());
         } catch (Exception exp) {
             Logger.application.error("Exception", exp);
         }
 
         EstimateOrderFeeResponse estimatedFeeResponse = api.ordersFeePost(authorization, orderRequest);
         try {
-            Logger.application.debug("EstimateOrderFeeResponse: " + estimatedFeeResponse.toJSON());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "EstimateOrderFeeResponse: " + estimatedFeeResponse.toJSON());
         } catch (Exception exp) {
-            Logger.application.error("Exception", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception", exp);
         }
         // Todo: Need to modify according to the caller expectation.
         return estimatedFeeResponse;
@@ -251,31 +253,31 @@ public class OrderController {
 
 
     public Object placeOrder(String providerConfig, String orderObject, String systemTransactionId) {
-        Logger.application.info("placeOrder request received");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "placeOrder request received");
 
         // 1. Send accessToken request
         AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
-        Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "AccessToken: [" + accTokenresponse.getAccessToken() + "]");
         ObjectMapper objectMapper = new ObjectMapper();
         Order order = null;
         try {
             order = objectMapper.readValue(orderObject, Order.class);
-            Logger.application.info("ORDER : [" + order.toString() + "]");
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "ORDER : [" + order.toString() + "]");
 
         } catch (Exception exp) {
-            Logger.application.error("Exception in mapping the Order class", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in mapping the Order class", exp);
         }
 
         // 2. Use token to placeOrder
         ProcessResult response = sendPlaceOrderRequest(accTokenresponse.getAccessToken(), order);
         try {
-            Logger.application.info("Placed order: " + response.toString());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Placed order: " + response.toString());
         } catch (Exception exp) {
-            Logger.application.error("Exception ", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception ", exp);
         }
 
         // 3. Return price
-        Logger.application.info("Returning placeOrder response");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Returning placeOrder response");
         return new JSONObject(new Gson().toJson(response));
     }
 
@@ -292,7 +294,7 @@ public class OrderController {
         api.setApiClient(apiClient);
 
         try {
-            Logger.application.debug("Sending OrderPostRequest: " + createOrderRequest);
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Sending OrderPostRequest: " + createOrderRequest);
         } catch (Exception exp) {
             Logger.application.error("Exception", exp);
         }
@@ -314,7 +316,7 @@ public class OrderController {
                 response.setReturnObject(submitOrderResult);
                 response.setResultCode(0);
 
-                Logger.application.debug("EstimateOrderFeeResponse: " + orderResponse.toString());
+                Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "EstimateOrderFeeResponse: " + orderResponse.toString());
             } else {
                 submitOrderResult.setResultCode(-1);
                 response.setReturnObject(submitOrderResult);
@@ -327,7 +329,7 @@ public class OrderController {
             submitOrderResult.setMessage(exp.getMessage());
             response.setReturnObject(submitOrderResult);
             response.setResultCode(-1);
-            Logger.application.error("Exception in EstimateOrderFeeResponse, ", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in EstimateOrderFeeResponse, ", exp);
         }
         return response;
     }
@@ -336,23 +338,23 @@ public class OrderController {
     public Object QueryOrder(String providerConfig, String spOrderId, String systemTransactionId) {
 
 
-        Logger.application.info(" QueryOrder request received");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", " QueryOrder request received");
 
         // 1. Send accessToken request
         AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
-        Logger.application.info("AccessToken: [" + accTokenresponse.getAccessToken() + "]");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "AccessToken: [" + accTokenresponse.getAccessToken() + "]");
 
 
         // 2. Use token to placeOrder
         ProcessResult response = sendGetSpecificOrder(accTokenresponse.getAccessToken(), spOrderId);
         try {
-            Logger.application.info("Query order: " + response.toString());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Query order: " + response.toString());
         } catch (Exception exp) {
-            Logger.application.error("Exception ", exp);
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Exception ", exp);
         }
 
         // 3. Return price
-        Logger.application.info("Returning placeOrder response");
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Returning placeOrder response");
         return new JSONObject(new Gson().toJson(response));
     }
 
@@ -370,7 +372,7 @@ public class OrderController {
         api.setApiClient(apiClient);
 
         try {
-            Logger.application.debug("Sending GetSpecificOrder: " + orderId);
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Sending GetSpecificOrder: " + orderId);
         } catch (Exception exp) {
             Logger.application.error("Exception", exp);
         }
@@ -424,7 +426,7 @@ public class OrderController {
                 response.setReturnObject(queryOrderResult);
                 response.setResultCode(0);
 
-                Logger.application.debug("GetSpecificOrder : " + getOrderResponse.toString());
+                Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "GetSpecificOrder : " + getOrderResponse.toString());
             } else {
                 queryOrderResult.isSuccess = false;
                 response.resultCode = -1;
@@ -440,7 +442,7 @@ public class OrderController {
             response.setReturnObject(queryOrderResult);
             response.setResultCode(-1);
 
-            Logger.application.error("Exception in GetSpecificOrder ", exp);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in GetSpecificOrder ", exp);
         }
         return response;
     }
@@ -452,13 +454,13 @@ public class OrderController {
 
         try {
             callbackRequest = mapper.convertValue(requestBody, CallbackRequest.class);
-            Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Response : " + callbackRequest.toString());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController-SpCallbackResponse ", "Response : " + callbackRequest.toString());
             SpCallbackResult spCallbackResult = callback(callbackRequest);
             response.setReturnObject(spCallbackResult);
             response.setResultCode(0);
 
         } catch (Exception exception) {
-            Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Exception : " + exception.getMessage());
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController-SpCallbackResponse ", "Exception : " + exception.getMessage());
         }
 
 
@@ -492,7 +494,7 @@ public class OrderController {
                 driverId = request.getDriver().getId();
                 riderName = request.getDriver().getName();
                 riderPhone = request.getDriver().getPhoneNumber();
-                Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url :::: " +request.getTrackingLink());
+                Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url :::: " + request.getTrackingLink());
 
                 trackingLink = request.getTrackingLink();
                 systemStatus = DeliveryCompletionStatus.AWAITING_PICKUP.name();
@@ -517,7 +519,7 @@ public class OrderController {
         }
         Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "driverId : " + driverId + " & riderName :" + riderName + " & riderPhone : " + riderPhone);
 
-        Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url : " +trackingLink);
+        Logger.application.info(Logger.pattern, Main.VERSION, "SpCallbackResponse ", "Tracking Url : " + trackingLink);
 
         spCallbackResult.setSpOrderId(spOrderId);
         spCallbackResult.setStatus(status);
