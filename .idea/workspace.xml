@@ -6,21 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added the callback receiving controller and endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/deliveryService/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/deliveryService/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kalsym/pandago/client/api/OrdersApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dw-panda-go-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/dw-panda-go-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +32,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1664176144" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="2.0-SNAPSHOT" />
                     <option name="lastUsedInstant" value="1662004733" />

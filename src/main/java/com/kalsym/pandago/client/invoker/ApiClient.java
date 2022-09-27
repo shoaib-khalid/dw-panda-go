@@ -55,7 +55,7 @@ public class ApiClient {
 
     private HttpHeaders defaultHeaders = new HttpHeaders();
     //TODO: PRODUCTION CREDENTAILS
-    private String basePath = "https://pandago-api-sandbox.deliveryhero.io/sg/api/v1";
+    private String basePath = "https://pandago-api-apso.deliveryhero.io/pk/api/v1";
 
     private RestTemplate restTemplate;
 

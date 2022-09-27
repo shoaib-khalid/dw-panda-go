@@ -88,7 +88,7 @@ public class MainController {
 
     public static AccessTokenResponse sendAccessTokenRequest() {
 
-        String basePath = "https://sts-st.deliveryhero.io";
+        String basePath = "https://sts.deliveryhero.io";
         ApiClient apiClient = new ApiClient();
         apiClient.setBasePath(basePath);
         final LoginApi api = new LoginApi();
@@ -122,10 +122,10 @@ public class MainController {
 
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         formParams.add("grant_type", "client_credentials");
-        formParams.add("client_id", "pandago:sg:349c98a1-92ef-43f2-b262-c1905cc133b9");
+        formParams.add("client_id", "pandago:pk:d38a7884-f42d-49e8-989b-0efc93348f00");
         formParams.add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYyNDRmOTI4LWVmOTYtNGZhYi1hODA3LTc5MDM4YWQ5MzA0MiJ9.eyJpc3MiOiJwYW5kYWdvOnNnOjM0OWM5OGExLTkyZWYtNDNmMi1iMjYyLWMxOTA1Y2MxMzNiOSIsInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5IiwianRpIjoiYTg4MTE3ZDAtMWUxZC0xMWVkLTg2MWQtMDI0MmFjMTI4NjAyIiwiZXhwIjoxNjkwOTMyMDgyLCJhdWQiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8ifQ.ts1w86TPedFuAvIrhEVdzOWmUJ17gEktmuCohAfsRys47HDmsMn1-wHSzm8P09p1eZmYBgydHIpHasB1AT_PvXB2uxDUpfyFw1hBuldzBFi4YZNcSnyGnjnwv7YvmP8GRNQ8nrY1tBNkup83QxUq56qN8ow59FkdY-pGwBWLJbFksZ-BBLOCwG1lxAIYZ24vcVceNYu9hHCcuFrmUOVQeUuQ6RTJNUoMDuuLTrmpP3yf9t7OfsDsChDXTQM6GWxCAtRFtEHDbdIpYrT6IwKL8iVdYWmGK-LwurAe23plqwWKAkHzT2AkKQ_O3rHHykUPvBlDN8yJjrLL7ivMmKmtQA");
-        formParams.add("scope", "pandago.api.sg.*");
+        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsImVudGl0bGVtZW50IjpmYWxzZX0.eyJpc3MiOiJEaW5vQ2hpZXNhLmdpdGh1Yi5pbyIsInN1YiI6InNoZW5pcXVhIiwiYXVkIjoiZXZhbmRlciIsImlhdCI6MTY2Mzc1Mzk1NCwiZXhwIjoxNjYzNzU0NTU0fQ.MlcEqyyXL8c4hKzMG0Oh0cnJkB4iax341HvwsRe7MOpN-hcCkHXFchOL_KXA4tm0x80dH916WuyOhBLF_pGW4UZQP02jrnGkcQwVnsBwtfcCZflMhz9y8OxQcr6JFFs_U5V3cbNYq2-PixNm5ZVtlETgdogpQqmhO5rjLhu6CGCYIW3ec99o8Yp3xMuNZvIfVemj0z2CCFmwHzKHxvEDb4EXyet0DWt1KVIuXUiTPSMMNIcxZqanHUc0wElbsknEr2KPuFz-hXVk1alabuli2SOAPKj7_X44onkKBObblPH0acDCAClVVPQs5IH2oIeww7jBqmBd5fi9udZoLrsVUw");
+        formParams.add("scope", "pandago.api.pk.*");
 
         final String[] accepts = {
                 "application/json"
