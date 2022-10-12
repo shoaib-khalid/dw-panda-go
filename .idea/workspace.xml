@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12ebf19b-5316-4b87-aeba-c13b90695d6d" name="Changes" comment="Added the callback receiving controller and endpoint">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/model/AdditionalInfoResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/model/wrapper/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/invoker/ApiClient.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/deliveryService/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kalsym/pandago/client/api/OrdersApi.java" afterDir="false" />
+>>>>>>> staging
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +41,13 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+<<<<<<< HEAD
+=======
+                    <option name="branchName" value="staging" />
+                    <option name="lastUsedInstant" value="1664853091" />
+                  </RecentBranch>
+                  <RecentBranch>
+>>>>>>> staging
                     <option name="branchName" value="master" />
                     <option name="lastUsedInstant" value="1664176144" />
                   </RecentBranch>

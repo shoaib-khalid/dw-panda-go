@@ -303,9 +303,9 @@ public class OrdersApi {
         sender.setName(body.getPickup().getPickupContactName());
         if (body.getPickup().getPickupContactPhone().startsWith("+")) {
             sender.setPhoneNumber(body.getPickup().getPickupContactPhone());
-        }else if(body.getPickup().getPickupContactPhone().startsWith("6")){
+        } else if (body.getPickup().getPickupContactPhone().startsWith("6")) {
             sender.setPhoneNumber("+" + body.getPickup().getPickupContactPhone());
-        }else{
+        } else {
             sender.setPhoneNumber("+6" + body.getPickup().getPickupContactPhone());
         }
         pickup.setAddress(body.getPickup().getPickupAddress());
@@ -471,5 +471,47 @@ public class OrdersApi {
         };
         return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     }
+
+
+    public Outlet generateStoreClientId(String authorization, CreateOrUpdateOutletRequest outletRequest) throws RestClientException {
+        Object postBody = null;
+
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'authorization' when calling ordersProofOfDeliveryOrderIdGet");
+        }
+
+        // verify the required parameter 'orderId' is set
+        if (outletRequest == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'outletRequest' when calling generateStoreClientId");
+        }
+        String clientId = outletRequest.getName().toLowerCase().replace(" ", "-");
+
+        // create path and map variables
+        String path = UriComponentsBuilder.fromPath("/outlets/" + clientId).build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (authorization != null)
+            headerParams.add("Authorization", apiClient.parameterToString(authorization));
+
+        final String[] accepts = {
+                "application/json"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = {
+                "application/json"
+        };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[]{"Bearer Token"};
+
+        ParameterizedTypeReference<Outlet> returnType = new ParameterizedTypeReference<Outlet>() {
+        };
+        return apiClient.invokeAPI(path, HttpMethod.PUT, queryParams, outletRequest, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+
 
 }
