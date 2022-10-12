@@ -10,6 +10,7 @@ import com.kalsym.pandago.client.api.OrdersApi;
 import com.kalsym.pandago.client.invoker.ApiClient;
 import com.kalsym.pandago.client.model.*;
 import com.kalsym.deliveryService.utility.Logger;
+import com.kalsym.pandago.client.model.wrapper.Store;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import com.kalsym.pandago.client.model.wrapper.Order;
@@ -536,6 +537,100 @@ public class OrderController {
         return spCallbackResult;
     }
 
+    public Object GenerateClientId(String providerConfig, String storeObject, String systemTransactionId) {
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "placeOrder request received");
+
+        // 1. Send accessToken request
+        AccessTokenResponse accTokenresponse = MainController.sendAccessTokenRequest();
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "AccessToken: [" + accTokenresponse.getAccessToken() + "]");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Store store = null;
+        try {
+            store = objectMapper.readValue(storeObject, Store.class);
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "ORDER : [" + store.toString() + "]");
+
+        } catch (Exception exp) {
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in mapping the Order class", exp);
+        }
+
+        // 2. Use token to placeOrder
+        ProcessResult response = generateStoreId(accTokenresponse.getAccessToken(), store);
+        try {
+            Logger.application.info(Logger.pattern, Main.VERSION, "Generate Store Client Id", "Placed order: " + response.toString());
+        } catch (Exception exp) {
+            Logger.application.error(Logger.pattern, Main.VERSION, "StoreClientId", "Exception ", exp);
+        }
+
+        // 3. Return price
+        Logger.application.info(Logger.pattern, Main.VERSION, "StoreClientId", "Returning StoreClientId response");
+        return new JSONObject(new Gson().toJson(response));
+    }
+
+
+    public ProcessResult generateStoreId(String token, Store store) {
+
+        CreateOrUpdateOutletRequest createOrUpdateOutletRequest = new CreateOrUpdateOutletRequest();
+        createOrUpdateOutletRequest.setAddress(store.getAddress());
+        createOrUpdateOutletRequest.setName(store.getName());
+        createOrUpdateOutletRequest.setLatitude(new BigDecimal(store.getLatitude()));
+        createOrUpdateOutletRequest.setLongitude(new BigDecimal(store.getLongitude()));
+        createOrUpdateOutletRequest.setCity(store.getCity());
+        createOrUpdateOutletRequest.setPhoneNumber(store.getPhoneNumber());
+        createOrUpdateOutletRequest.setCurrency("PKR");
+        createOrUpdateOutletRequest.setLocale("en-SG");
+        createOrUpdateOutletRequest.setDescription("This is the HQ of " + store.getName());
+
+        ProcessResult response = new ProcessResult();
+        Logger.application.info("Deserializing GenerateStore Put Request");
+
+        ApiClient apiClient = new ApiClient();
+
+        String authorization = "Bearer " + token;
+        final OrdersApi api = new OrdersApi();
+
+        api.setApiClient(apiClient);
+
+        try {
+            Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "Sending CreateStoreReqeust: " + store);
+        } catch (Exception exp) {
+            Logger.application.error("Exception", exp);
+        }
+
+        Outlet outlet = null;
+        try {
+            outlet = api.generateStoreClientId(authorization, createOrUpdateOutletRequest);
+            AdditionalInfoResult additionalInfoResult = new AdditionalInfoResult();
+
+            if (outlet != null) {
+
+                additionalInfoResult.setStoreId(store.getId());
+                additionalInfoResult.setCostCentreCode(outlet.getClientVendorId());
+                additionalInfoResult.setSuccess(true);
+                additionalInfoResult.setProviderId(store.getProviderId());
+                additionalInfoResult.setResultCode(0);
+                response.setReturnObject(additionalInfoResult);
+                response.setResultCode(0);
+
+                Logger.application.info(Logger.pattern, Main.VERSION, "OrderController", "additionalInfoResult: " + additionalInfoResult.toString());
+            } else {
+
+                additionalInfoResult.setProviderId(store.getProviderId());
+                additionalInfoResult.setSuccess(false);
+                additionalInfoResult.setResultCode(-1);
+                response.setReturnObject(additionalInfoResult);
+                response.setResultCode(-1);
+            }
+        } catch (Exception exp) {
+            AdditionalInfoResult additionalInfoResult = new AdditionalInfoResult();
+
+            additionalInfoResult.setResultCode(1);
+            additionalInfoResult.setMessage(exp.getMessage());
+            response.setReturnObject(additionalInfoResult);
+            response.setResultCode(-1);
+            Logger.application.error(Logger.pattern, Main.VERSION, "OrderController", "Exception in additionalInfoResult, ", exp);
+        }
+        return response;
+
 
 //    @PostMapping(path = {"/addStore/{storeId}"}, name = "store-add", produces = "application/json")
 //    public String addStore(HttpServletRequest request, @PathVariable String storeId, @RequestBody CreateOrUpdateOutletRequest outletRequest) {
@@ -543,6 +638,6 @@ public class OrderController {
 //
 //        return addOrUpdateStore(storeId, outletRequest);
 //
-//    }
+    }
 
 }
