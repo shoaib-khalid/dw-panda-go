@@ -64,10 +64,10 @@ public class LoginApi {
 
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         formParams.add("grant_type", "client_credentials");
-        formParams.add("client_id", "pandago:sg:349c98a1-92ef-43f2-b262-c1905cc133b9");
+        formParams.add("client_id", "pandago:pk:d38a7884-f42d-49e8-989b-0efc93348f00");
         formParams.add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYyNDRmOTI4LWVmOTYtNGZhYi1hODA3LTc5MDM4YWQ5MzA0MiJ9.eyJpc3MiOiJwYW5kYWdvOnNnOjM0OWM5OGExLTkyZWYtNDNmMi1iMjYyLWMxOTA1Y2MxMzNiOSIsInN1YiI6InBhbmRhZ286c2c6MzQ5Yzk4YTEtOTJlZi00M2YyLWIyNjItYzE5MDVjYzEzM2I5IiwianRpIjoiYTg4MTE3ZDAtMWUxZC0xMWVkLTg2MWQtMDI0MmFjMTI4NjAyIiwiZXhwIjoxNjkwOTMyMDgyLCJhdWQiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8ifQ.ts1w86TPedFuAvIrhEVdzOWmUJ17gEktmuCohAfsRys47HDmsMn1-wHSzm8P09p1eZmYBgydHIpHasB1AT_PvXB2uxDUpfyFw1hBuldzBFi4YZNcSnyGnjnwv7YvmP8GRNQ8nrY1tBNkup83QxUq56qN8ow59FkdY-pGwBWLJbFksZ-BBLOCwG1lxAIYZ24vcVceNYu9hHCcuFrmUOVQeUuQ6RTJNUoMDuuLTrmpP3yf9t7OfsDsChDXTQM6GWxCAtRFtEHDbdIpYrT6IwKL8iVdYWmGK-LwurAe23plqwWKAkHzT2AkKQ_O3rHHykUPvBlDN8yJjrLL7ivMmKmtQA");
-        formParams.add("scope", "pandago.api.sg.*");
+        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjBjODEwYTVkLTFjMzUtNGNhZS1iODhiLTZjYWUxZGUwODdhMyJ9.eyJpc3MiOiJwYW5kYWdvOnBrOmQzOGE3ODg0LWY0MmQtNDllOC05ODliLTBlZmM5MzM0OGYwMCIsInN1YiI6InBhbmRhZ286cGs6ZDM4YTc4ODQtZjQyZC00OWU4LTk4OWItMGVmYzkzMzQ4ZjAwIiwianRpIjoiMDU0ZjllNWMtNGFhZS0xMWVkLWI4NzgtMDI0MmFjMTIwMDAyIiwiZXhwIjoxNjk3MTcwNjk3LCJhdWQiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8ifQ.dqKJH8DFvkoWE23jS5WJeNXodPq7c7ikSPFwI3GQc7Ab6tljeGmtWOQX9SrZin-PESRFUsCGAf-tqY7ucYDpLtO9TyfRkc5vrKh0jNN61E1kKLOrWdL1ye9Cesf1bxVS2zwNW99Z1fHqF-eZhmFJFe7OnM243KPFqlJ_2HCUrQvYOGC9xq6gN0FQSvhCfvvSd-fKrExgJNIXS8CigMzaaS7fEKUkI5mR9MViFwfMgcLmUrWj_Bx9j7Yhoo9nrprdy7TmtrsDCcoYAd3ySBKjC3DD5I5kax7vpG6mKGtfVmUwwZj3NIe12M8coz39E4zlQyWD18zVlXXLLkvjdIOXjQ");
+        formParams.add("scope", "pandago.api.pk.*");
 
         final String[] accepts = {
                 "application/json"

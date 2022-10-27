@@ -334,7 +334,7 @@ public class OrdersApi {
         request.setRecipient(customer);
         if (body.getPaymentType().equals("COD")) {
             request.setPaymentMethod(PaymentMethod.CASH_ON_DELIVERY);
-            request.setAmount(BigDecimal.valueOf(body.getOrderAmount()));
+            request.setAmount(body.getCodAmount());
         } else {
             request.setPaymentMethod(PaymentMethod.PAID);
         }
@@ -342,6 +342,10 @@ public class OrdersApi {
         DeliveryTasks tasks = new DeliveryTasks();
         tasks.setAgeValidationRequired(false);
         request.setDeliveryTasks(tasks);
+
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderAPI", "Request Body ::: " + request);
+        Logger.application.info(Logger.pattern, Main.VERSION, "OrderAPI", "Request Body ::: " + request.toString());
+
 
         String path = UriComponentsBuilder.fromPath("/orders").build().toUriString();
 

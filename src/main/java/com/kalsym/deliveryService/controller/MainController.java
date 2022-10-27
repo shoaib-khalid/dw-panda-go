@@ -124,7 +124,7 @@ public class MainController {
         formParams.add("grant_type", "client_credentials");
         formParams.add("client_id", "pandago:pk:d38a7884-f42d-49e8-989b-0efc93348f00");
         formParams.add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsImVudGl0bGVtZW50IjpmYWxzZX0.eyJpc3MiOiJEaW5vQ2hpZXNhLmdpdGh1Yi5pbyIsInN1YiI6InNoZW5pcXVhIiwiYXVkIjoiZXZhbmRlciIsImlhdCI6MTY2Mzc1Mzk1NCwiZXhwIjoxNjYzNzU0NTU0fQ.MlcEqyyXL8c4hKzMG0Oh0cnJkB4iax341HvwsRe7MOpN-hcCkHXFchOL_KXA4tm0x80dH916WuyOhBLF_pGW4UZQP02jrnGkcQwVnsBwtfcCZflMhz9y8OxQcr6JFFs_U5V3cbNYq2-PixNm5ZVtlETgdogpQqmhO5rjLhu6CGCYIW3ec99o8Yp3xMuNZvIfVemj0z2CCFmwHzKHxvEDb4EXyet0DWt1KVIuXUiTPSMMNIcxZqanHUc0wElbsknEr2KPuFz-hXVk1alabuli2SOAPKj7_X44onkKBObblPH0acDCAClVVPQs5IH2oIeww7jBqmBd5fi9udZoLrsVUw");
+        formParams.add("client_assertion", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjBjODEwYTVkLTFjMzUtNGNhZS1iODhiLTZjYWUxZGUwODdhMyJ9.eyJpc3MiOiJwYW5kYWdvOnBrOmQzOGE3ODg0LWY0MmQtNDllOC05ODliLTBlZmM5MzM0OGYwMCIsInN1YiI6InBhbmRhZ286cGs6ZDM4YTc4ODQtZjQyZC00OWU4LTk4OWItMGVmYzkzMzQ4ZjAwIiwianRpIjoiMDU0ZjllNWMtNGFhZS0xMWVkLWI4NzgtMDI0MmFjMTIwMDAyIiwiZXhwIjoxNjk3MTcwNjk3LCJhdWQiOiJodHRwczovL3N0cy5kZWxpdmVyeWhlcm8uaW8ifQ.dqKJH8DFvkoWE23jS5WJeNXodPq7c7ikSPFwI3GQc7Ab6tljeGmtWOQX9SrZin-PESRFUsCGAf-tqY7ucYDpLtO9TyfRkc5vrKh0jNN61E1kKLOrWdL1ye9Cesf1bxVS2zwNW99Z1fHqF-eZhmFJFe7OnM243KPFqlJ_2HCUrQvYOGC9xq6gN0FQSvhCfvvSd-fKrExgJNIXS8CigMzaaS7fEKUkI5mR9MViFwfMgcLmUrWj_Bx9j7Yhoo9nrprdy7TmtrsDCcoYAd3ySBKjC3DD5I5kax7vpG6mKGtfVmUwwZj3NIe12M8coz39E4zlQyWD18zVlXXLLkvjdIOXjQ");
         formParams.add("scope", "pandago.api.pk.*");
 
         final String[] accepts = {
